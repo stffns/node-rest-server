@@ -21,4 +21,5 @@ if(process.env.NODE_ENV === 'dev'){
     urlDB = 'mongodb+srv://stffens:ynVzhxjYpqFpFJUf@cluster0.l5f01.mongodb.net/cafe?retryWrites=true&w=majority';
 }
 
-process.env.urlDB = urlDB;
+process.env.urlDB = urlDB
+
