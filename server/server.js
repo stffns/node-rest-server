@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const usuario = require('./routes/usuario');
 
 require('./config/config');
 
@@ -9,7 +8,7 @@ const bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use( usuario );
+app.use(require('./routes/index'))
 
 const options = {
     useUnifiedTopology: true,
