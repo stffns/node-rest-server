@@ -1,9 +1,9 @@
 const express = require('express');
 const app = express();
-const usuario = require('./usuario');
-const login = require('./login');
 
-app.use( usuario );
-app.use( login );
+app.use( require('./usuario') );
+app.use( require('./login') );
+app.use( require('./categoria') );
+app.use( require('./productos') );
 
 module.exports = app;

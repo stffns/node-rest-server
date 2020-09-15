@@ -49,7 +49,7 @@ app.post('/usuario', [verificaToken, verificaAdminRole], function (req, res) {
         role: body.role
     });
 
-    usuario.save((err, usuarioDB) => {
+    usuario.save((err, usuarioDB) =>     {
         if (err) {
             res.status(400).json({
                 ok: false,

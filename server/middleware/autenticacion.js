@@ -6,6 +6,8 @@ const SEED = process.env.SEED;
 //
 
 let verificaToken = (req, res, next)=>{
+
+    console.log(req)
     let token = req.get('token');
 
     jwt.verify(token, SEED, (err, decoded) => {
@@ -40,10 +42,6 @@ let verificaAdminRole = (req, res, next) => {
     }else{
         next();
     }
-
-
-
-
 }
 
 module.exports = {
