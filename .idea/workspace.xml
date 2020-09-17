@@ -25,18 +25,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9fbed96a-cdfe-49fe-b04a-71dd72b84583" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/server/models/categoria.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/models/productos.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/routes/categoria.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/routes/productos.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/routes/imagenes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/routes/uploads.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/07-server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/07-server.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/config/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/config/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/middleware/autenticacion.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/middleware/autenticacion.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/productos.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/productos.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/usuario.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/usuario.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/productos.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/productos.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +76,7 @@
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="14.7.0" />
     <property name="javascript.nodejs.core.library.typings.version" value="14.10.1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/server" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -83,8 +84,13 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Indra\Desktop\Node\07-server\server" />
+    </key>
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
@@ -102,7 +108,11 @@
       <workItem from="1599664194453" duration="10362000" />
       <workItem from="1599769715435" duration="23289000" />
       <workItem from="1599948995419" duration="33219000" />
-      <workItem from="1600174008310" duration="9092000" />
+      <workItem from="1600174008310" duration="10919000" />
+      <workItem from="1600208785437" duration="310000" />
+      <workItem from="1600209106896" duration="473000" />
+      <workItem from="1600209592736" duration="21698000" />
+      <workItem from="1600381727071" duration="1954000" />
     </task>
     <servers />
   </component>
@@ -122,10 +132,18 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="184" y="14" key="SettingsEditor" timestamp="1600125852002">
+    <state x="363" y="105" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1600208694694">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="184" y="14" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1600125852002" />
+    <state x="363" y="105" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1366.738@0.0.1366.738" timestamp="1600208694694" />
+    <state x="184" y="14" key="SettingsEditor" timestamp="1600209581504">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="184" y="14" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1600209581504" />
+    <state x="390" y="102" width="585" height="534" key="find.popup" timestamp="1600357054796">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="390" y="102" width="585" height="534" key="find.popup/0.0.1366.738@0.0.1366.738" timestamp="1600357054796" />
     <state x="339" y="165" width="672" height="677" key="run.anything.popup" timestamp="1600186850079">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

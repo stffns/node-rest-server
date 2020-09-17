@@ -1,7 +1,7 @@
 const express = require('express');
 let Producto = require('../models/productos');
 
-const { verificaToken } = require('../middleware/autenticacion')
+const {verificaToken} = require('../middleware/autenticacion')
 
 let app = express();
 
@@ -9,37 +9,38 @@ const updateOptions = {
     upsert: true,
     runValidators: true,
     setDefaultsOnInsert: true,
-    new: true ,
+    new: true,
     context: 'query'
 };
 
 let query = {};
 
-app.get('/productos', (req , res) =>{
+app.get('/productos', (req, res) => {
     //Trae todos los producto usando populate y paginado
 
     let desde = Number(req.query.desde) || 0;
     let limite = Number(req.query.limite) || 5;
 
-    query={disponible:true};
+    query = {disponible: true};
 
     const options = {
         select: 'nombre descripcion precioUni usuario disponible',
         page: desde,
         limit: limite,
         sort: 'descripcion',
-        populate: ([{ path:'usuario', select: 'nombre email' },
-                    { path:'categoria', select: 'descripcion' }])
+        populate: ([{path: 'usuario', select: 'nombre email'},
+            {path: 'categoria', select: 'descripcion'}])
 
     }
 
-    Producto.paginate(query,options).then(async (data) => {
+    Producto.paginate(query, options).then(async (data) => {
         let cuenta = await Producto.countDocuments(query);
         res.json({
             ok: true,
             count: cuenta,
-            data});
-    }).catch( (err) => {
+            data
+        });
+    }).catch((err) => {
         res.status(400).json({
             ok: false,
             err
@@ -48,39 +49,36 @@ app.get('/productos', (req , res) =>{
 
 
 })
-
-app.get('/productos/:id', (req , res) =>{
+app.get('/productos/:id', (req, res) => {
 
     let id = req.params.id;
 
     Producto.findById(id)
         .populate('usuario', 'nombre email')
         .populate('categoria', 'descripcion')
-        .exec((err, productoDB)=>{
-        if(err){
-            return res.status(500).json({
-                ok: false,
-                err
-            })
-        }
+        .exec((err, productoDB) => {
+            if (err) {
+                return res.status(500).json({
+                    ok: false,
+                    err
+                })
+            }
 
-        if(!productoDB){
-            return res.status(400).json({
-                ok: false,
-                err: {
-                    message: 'El Id no existe'
-                }
-            })
-        }
-        res.json({
-            ok: true,
-            producto: productoDB
-        });
-    })
+            if (!productoDB) {
+                return res.status(400).json({
+                    ok: false,
+                    err: {
+                        message: 'El Id no existe'
+                    }
+                })
+            }
+            res.json({
+                ok: true,
+                producto: productoDB
+            });
+        })
 })
-
-
-app.get('/productos/buscar/:termino', verificaToken , (req, res)=> {
+app.get('/productos/buscar/:termino', verificaToken, (req, res) => {
 
     let termino = req.params.termino;
     let regex = RegExp(termino, 'i');
@@ -112,10 +110,7 @@ app.get('/productos/buscar/:termino', verificaToken , (req, res)=> {
 
         })
 });
-
-
-
-app.post('/productos', verificaToken ,(req , res) =>{
+app.post('/productos', verificaToken, (req, res) => {
 
     let body = req.body;
 
@@ -138,7 +133,7 @@ app.post('/productos', verificaToken ,(req , res) =>{
             });
         }
 
-        if(!productoDB){
+        if (!productoDB) {
             return res.status(400).json({
                 ok: false,
                 err
@@ -154,11 +149,10 @@ app.post('/productos', verificaToken ,(req , res) =>{
 
 
 })
-
-app.put('/productos/:id', (req , res) =>{
+app.put('/productos/:id', (req, res) => {
 
     let id = req.params.id;
-    let body = req.body;
+    let {categoria , descripcion , disponible , img , nombre , precioUni} = req.body;
 
     Producto.findById(id, updateOptions, (err, productoDB) => {
 
@@ -175,13 +169,14 @@ app.put('/productos/:id', (req , res) =>{
                 err
             });
         }
-        productoDB.nombre = body.nombre;
-        productoDB.descripcion = body.descripcion;
-        productoDB.categoria = body.categoria;
-        productoDB.disponible = body.disponible;
-        productoDB.precioUni = body.precioUni;
+        productoDB.nombre = nombre;
+        productoDB.descripcion = descripcion;
+        productoDB.categoria = categoria;
+        productoDB.disponible = disponible;
+        productoDB.img = img;
+        productoDB.precioUni = precioUni;
 
-        productoDB.save((err, productoGuardado)=>{
+        productoDB.save((err, productoGuardado) => {
             if (err) {
                 return res.status(500).json({
                     ok: false,
@@ -198,10 +193,8 @@ app.put('/productos/:id', (req , res) =>{
     });
 
 
-
 })
-
-app.delete('/productos/:id', verificaToken, (req , res) =>{
+app.delete('/productos/:id', verificaToken, (req, res) => {
 
     let id = req.params.id;
 
@@ -209,7 +202,7 @@ app.delete('/productos/:id', verificaToken, (req , res) =>{
         disponible: false
     }
 
-    Producto.findByIdAndUpdate(id, cambiaEstado, (err, productoDB)=>{
+    Producto.findByIdAndUpdate(id, cambiaEstado, (err, productoDB) => {
         if (err) {
             return res.status(500).json({
                 ok: false,
@@ -234,9 +227,6 @@ app.delete('/productos/:id', verificaToken, (req , res) =>{
 
 
 })
-
-
-
 
 module.exports = app;
 
